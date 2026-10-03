@@ -1,2 +1,22 @@
-<!DOCTYPE html>
-<html><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><title>DEV ABDUL</title><script src="https://cdn.tailwindcss.com"></script></head><body class="bg-black text-white p-6"><h1 class="text-4xl font-black">DEV<br>ABDUL.</h1><p class="opacity-50 text-xs mt-3">Natengeza website kwa simu. Kutoka Kijichi, Dar.</p><a href="https://wa.me/255710240894" class="bg-white text-black inline-block mt-8 px-6 py-3 rounded-full text-xs font-bold">WhatsApp Yangu →</a><p class="text-[9px] opacity-20 mt-20">github.com/dev-abdul268• 2026</p></body></html>
+<div class="wrap">
+  <div class="hero">
+    <div class="top"><span>KIJICHI - DAR</span> <span>EST. 2026</span></div>
+    <h1>DEV<br><span>ABDUL.</span></h1>
+    <p class="bio">Designer & Developer wa hapa Kijichi. Website, Poster, Logo - zote kwa simu tu.</p>
+    
+    <img src="https://i.postimg.cc/xTCkqNHS/IMG-8585.jpg" class="profile" alt="Dev Abdul">
+    
+    <div class="badge"><span>✓ AVAILABLE</span><span>⚡ FAST REPLY</span></div>
+  </div>
+
+  <div class="section">
+    <div class="label">SERVICES</div>
+    <div class="card"><div><h3>WEBSITE DESIGN</h3><p>Business, Portfolio, Store</p></div><div class="price">150K</div></div>
+    <div class="card"><div><h3>POSTER DESIGN</h3><p>Events, Movies, Business</p></div><div class="price">25K</div></div>
+    <div class="card"><div><h3>LOGO DESIGN</h3><p>Modern & Unique</p></div><div class="price">35K</div></div>
+  </div>
+
+  <div class="footer">DEV ABDUL © 2026 - KIJICHI</div>
+</div>
+
+<a class="cta" href="https://wa.me/255710240894?text=Habari%20Dev%20Abdul,%20nimeona%20portfolio%20yako%20CodePen">WHATSAPP →</a>
