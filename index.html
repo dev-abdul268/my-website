@@ -1,18 +1,108 @@
-<h1>Calculator ya Punguzo</h1>
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Biashara</title>
 
-<p>Andika bei ya kawaida:</p>
-<input type="number" id="beiKawaida" placeholder="mf: 15000" style="padding: 10px;">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #eef2f7;
+      padding: 20px;
+    }
 
-<button onclick="pigaHesabu()" style="background: blue; color: white; padding: 10px; margin-top: 10px;">Piga Hesabu</button>
+    .card {
+      max-width: 400px;
+      margin: auto;
+      padding: 22px;
+      background: white;
+      border-radius: 16px;
+      box-shadow: 0 4px 12px #0001;
+    }
 
-<h2 id="matokeo" style="color: green;"></h2>
+    h2 {
+      color: #087f5b;
+      text-align: center;
+    }
 
-<script>
-function pigaHesabu() {
-  let bei = document.getElementById("beiKawaida").value;
-  let punguzo = bei * 0.2; // punguzo 20%
-  let beiMpya = bei - punguzo;
-  
-  document.getElementById("matokeo").innerHTML = "Bei mpya ni: " + beiMpya + " TZS. Umeokoa " + punguzo + "!";
-}
-</script>
+    input, button {
+      width: 100%;
+      box-sizing: border-box;
+      padding: 12px;
+      margin: 8px 0;
+      font-size: 16px;
+      border-radius: 8px;
+    }
+
+    input {
+      border: 1px solid #ccc;
+    }
+
+    button {
+      background: #087f5b;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+
+    #matokeo {
+      font-weight: bold;
+      margin-top: 16px;
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="card">
+    <h2>Smart Biashara</h2>
+
+    <p>Hesabu faida ya biashara yako.</p>
+
+    <label>Mapato (TSh)</label>
+    <input
+      id="mapato"
+      type="number"
+      placeholder="Mfano: 250000"
+      min="0"
+    >
+
+    <label>Matumizi (TSh)</label>
+    <input
+      id="matumizi"
+      type="number"
+      placeholder="Mfano: 175000"
+      min="0"
+    >
+
+    <button onclick="hesabuFaida()">
+      Hesabu faida
+    </button>
+
+    <p id="matokeo">
+      Faida yako itaonekana hapa.
+    </p>
+  </div>
+
+  <script>
+    function hesabuFaida() {
+      const mapato = document.getElementById("mapato").value;
+      const matumizi = document.getElementById("matumizi").value;
+
+      if (mapato === "" || matumizi === "" ||
+          Number(mapato) < 0 || Number(matumizi) < 0) {
+        document.getElementById("matokeo").textContent =
+          "Tafadhali ingiza kiasi sahihi.";
+        return;
+      }
+
+      const faida = Number(mapato) - Number(matumizi);
+
+      document.getElementById("matokeo").textContent =
+        "Faida yako ni TSh " +
+        faida.toLocaleString("en-US");
+    }
+  </script>
+</body>
+</html>
