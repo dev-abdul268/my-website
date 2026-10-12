@@ -1,108 +1,41 @@
-<!DOCTYPE html>
-<html lang="sw">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Smart Biashara</title>
+<h1 style="text-align:center;">📱 Samsung iPhone Calculator</h1>
 
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      background: #eef2f7;
-      padding: 20px;
-    }
+<div style="border: 2px solid black; padding: 20px; border-radius: 10px; max-width: 350px; margin: auto;">
 
-    .card {
-      max-width: 400px;
-      margin: auto;
-      padding: 22px;
-      background: white;
-      border-radius: 16px;
-      box-shadow: 0 4px 12px #0001;
-    }
+<p>Bei ya Simu (TZS):</p>
+<input type="number" id="beiSimu" value="1500000" style="width: 95%; padding: 10px;">
 
-    h2 {
-      color: #087f5b;
-      text-align: center;
-    }
+<p>Downpayment Ulicho nacho (TZS):</p>
+<input type="number" id="down" placeholder="mf: 300000" style="width: 95%; padding: 10px;">
 
-    input, button {
-      width: 100%;
-      box-sizing: border-box;
-      padding: 12px;
-      margin: 8px 0;
-      font-size: 16px;
-      border-radius: 8px;
-    }
+<p>Miezi ya kulipa (6 au 12):</p>
+<input type="number" id="miezi" value="12" style="width: 95%; padding: 10px;">
 
-    input {
-      border: 1px solid #ccc;
-    }
+<br><br>
+<button onclick="kokotoa()" style="width: 100%; background: black; color: white; padding: 15px; border-radius: 10px; font-size: 18px;">KOKOTOA</button>
 
-    button {
-      background: #087f5b;
-      color: white;
-      border: none;
-      cursor: pointer;
-    }
+<h2 id="baki" style="color: red;"></h2>
+<h2 id="mwezi" style="color: green;"></h2>
 
-    #matokeo {
-      font-weight: bold;
-      margin-top: 16px;
-      text-align: center;
-    }
-  </style>
-</head>
+<a id="waLink" href="#" style="display:none; background: green; color: white; padding: 12px; text-decoration: none; border-radius: 10px; display: none; text-align: center;">Tuma WhatsApp kwa Samsung</a>
 
-<body>
-  <div class="card">
-    <h2>Smart Biashara</h2>
+</div>
 
-    <p>Hesabu faida ya biashara yako.</p>
-
-    <label>Mapato (TSh)</label>
-    <input
-      id="mapato"
-      type="number"
-      placeholder="Mfano: 250000"
-      min="0"
-    >
-
-    <label>Matumizi (TSh)</label>
-    <input
-      id="matumizi"
-      type="number"
-      placeholder="Mfano: 175000"
-      min="0"
-    >
-
-    <button onclick="hesabuFaida()">
-      Hesabu faida
-    </button>
-
-    <p id="matokeo">
-      Faida yako itaonekana hapa.
-    </p>
-  </div>
-
-  <script>
-    function hesabuFaida() {
-      const mapato = document.getElementById("mapato").value;
-      const matumizi = document.getElementById("matumizi").value;
-
-      if (mapato === "" || matumizi === "" ||
-          Number(mapato) < 0 || Number(matumizi) < 0) {
-        document.getElementById("matokeo").textContent =
-          "Tafadhali ingiza kiasi sahihi.";
-        return;
-      }
-
-      const faida = Number(mapato) - Number(matumizi);
-
-      document.getElementById("matokeo").textContent =
-        "Faida yako ni TSh " +
-        faida.toLocaleString("en-US");
-    }
-  </script>
-</body>
-</html>
+<script>
+function kokotoa() {
+  let bei = Number(document.getElementById("beiSimu").value);
+  let down = Number(document.getElementById("down").value);
+  let miezi = Number(document.getElementById("miezi").value);
+  
+  let baki = bei - down;
+  let kwaMwezi = baki / miezi;
+  
+  document.getElementById("baki").innerHTML = "Baki kulipa: " + baki + " TZS";
+  document.getElementById("mwezi").innerHTML = "Kwa mwezi: " + Math.round(kwaMwezi) + " TZS kwa miezi " + miezi;
+  
+  let ujumbe = "Habari, nataka simu ya " + bei + ". Nina downpayment " + down + " naomba kulipa " + Math.round(kwaMwezi) + " kwa mwezi.";
+  let link = document.getElementById("waLink");
+  link.href = "https://wa.me/255710240894?text=" + encodeURIComponent(ujumbe);
+  link.style.display = "block";
+}
+</script>
