@@ -1,51 +1,85 @@
-<div style="max-width: 380px; margin: auto; font-family: sans-serif; background: #f5f5f5; padding: 15px; border-radius: 20px;">
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+body{font-family:sans-serif; background:#f2f2f2; padding:10px; margin:0;}
+.card{max-width:400px; margin:auto; background:white; border-radius:20px; padding:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1);}
+h2{text-align:center; margin:5px;}
+img#phoneImg{width:100%; border-radius:15px; height:250px; object-fit:cover; background:#eee;}
+select, input{width:100%; padding:12px; border-radius:10px; border:1px solid #ccc; margin-top:5px; box-sizing:border-box; font-size:16px;}
+button{width:100%; background:#000; color:white; padding:16px; border-radius:12px; border:none; font-weight:bold; font-size:18px; margin-top:15px;}
+#result{display:none; background:#f8f9ff; border:1px dashed #1428a0; padding:15px; border-radius:12px; margin-top:15px;}
+.waBtn{background:#25D366; color:white; text-align:center; padding:15px; border-radius:12px; text-decoration:none; display:block; font-weight:bold; margin-top:10px;}
+</style>
+</head>
+<body>
 
-<h1 style="text-align: center;">SAMSUNG</h1>
-<img src="https://images.samsung.com/is/image/samsung/p6pim/za/feature/101111225/za-feature-spotlight--stylish-design-436359415?$FB_TYPE_A_JPG$" style="width: 100%; border-radius: 15px;">
+<div class="card">
+<h2>📱 Duka la Abdul</h2>
+<p style="text-align:center; color:gray; margin-top:0;">Chagua simu uone malipo</p>
 
-<div style="background: white; padding: 20px; border-radius: 15px; margin-top: 15px;">
-<h2 style="margin: 0;">Galaxy S24 - 1,850,000 TZS</h2>
-<p style="color: gray;">Lipia kidogo kidogo</p>
+<img id="phoneImg" src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?q=80&w=500">
 
-<p><b>Downpayment:</b></p>
-<input type="number" id="down" placeholder="400,000" style="width: 90%; padding: 12px; border-radius: 10px; border: 1px solid #ccc;">
-
-<p><b>Miezi:</b></p>
-<select id="miezi" style="width: 95%; padding: 12px; border-radius: 10px;">
-  <option value="6">Miezi 6</option>
-  <option value="12" selected>Miezi 12</option>
-  <option value="18">Miezi 18</option>
+<label><b>Chagua Simu:</b></label>
+<select id="simu" onchange="badiliSimu()">
+  <option value="1500000|https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?q=80&w=500">Samsung S24 - 1,500,000 TZS</option>
+  <option value="3200000|https://images.unsplash.com/photo-1591337676887-a217a6970a8a?q=80&w=500">iPhone 14 Pro - 3,200,000 TZS</option>
+  <option value="450000|https://images.unsplash.com/photo-1592899677977-9bb10ba128a5?q=80&w=500">Tecno Camon 20 - 450,000 TZS</option>
+  <option value="890000|https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=500">Redmi Note 12 - 890,000 TZS</option>
 </select>
 
-<br><br>
-<button onclick="kokotoa()" style="width: 100%; background: #1428a0; color: white; padding: 15px; border-radius: 25px; border: none; font-size: 18px; font-weight: bold;">ONA MALIPO YANGU</button>
+<label style="margin-top:10px; display:block;"><b>Downpayment yako (TZS):</b></label>
+<input type="number" id="down" placeholder="mf: 300000">
 
-<div id="matokeoDiv" style="display: none; background: #eef2ff; padding: 15px; border-radius: 10px; margin-top: 15px;">
-  <p id="baki" style="margin: 5px;"></p>
-  <h2 id="mwezi" style="margin: 5px; color: #1428a0;"></h2>
-</div>
+<label style="margin-top:10px; display:block;"><b>Miezi:</b></label>
+<select id="miezi">
+  <option value="6">Miezi 6 (Riba 5%)</option>
+  <option value="12" selected>Miezi 12 (Riba 10%)</option>
+  <option value="18">Miezi 18 (Riba 15%)</option>
+</select>
 
-<br>
-<a id="waLink" href="#" style="display: none; background: #25D366; color: white; padding: 15px; text-decoration: none; border-radius: 25px; text-align: center; display: none; font-weight: bold;">💬 TUMA WHATSAPP SASA</a>
+<button onclick="kokotoa()">KOKOTOA MALIPO 💰</button>
+
+<div id="result">
+  <p id="bakiTxt"></p>
+  <p id="ribaTxt" style="color:#d00; font-size:14px;"></p>
+  <h3 id="mweziTxt" style="color:green; margin:10px 0;"></h3>
+  <a id="waLink" class="waBtn" href="#">Tuma WhatsApp Sasa 💬</a>
 </div>
 </div>
 
 <script>
-function kokotoa() {
-  let bei = 1850000;
+function badiliSimu(){
+  let val = document.getElementById("simu").value;
+  let picha = val.split("|")[1];
+  document.getElementById("phoneImg").src = picha;
+}
+
+function kokotoa(){
+  let simuData = document.getElementById("simu").value.split("|");
+  let bei = Number(simuData[0]);
+  let jinaSimu = document.getElementById("simu").options[document.getElementById("simu").selectedIndex].text;
   let down = Number(document.getElementById("down").value);
   let miezi = Number(document.getElementById("miezi").value);
-  if(down == 0){ alert("Weka downpayment kwanza!"); return; }
+
+  if(!down || down >= bei){ alert("Weka downpayment sahihi, lazima iwe chini ya bei!"); return; }
+
   let baki = bei - down;
-  let kwaMwezi = baki / miezi;
-  
-  document.getElementById("matokeoDiv").style.display = "block";
-  document.getElementById("baki").innerHTML = "Jumla inayobaki: " + baki.toLocaleString() + " TZS";
-  document.getElementById("mwezi").innerHTML = "Lipa: " + Math.round(kwaMwezi).toLocaleString() + " TZS / mwezi";
-  
-  let ujumbe = "Habari Samsung Store, nataka S24. Bei 1,850,000. Nina downpayment " + down + ". Naomba kulipa " + Math.round(kwaMwezi) + " kwa miezi " + miezi;
-  let link = document.getElementById("waLink");
-  link.href = "https://wa.me/255710240894?text=" + encodeURIComponent(ujumbe);
-  link.style.display = "block";
+  let ribaPercent = miezi==6? 0.05 : miezi==12? 0.10 : 0.15;
+  let riba = baki * ribaPercent;
+  let jumlaKulipa = baki + riba;
+  let kwaMwezi = jumlaKulipa / miezi;
+
+  document.getElementById("result").style.display = "block";
+  document.getElementById("bakiTxt").innerHTML = "Baki: <b>" + baki.toLocaleString() + " TZS</b>";
+  document.getElementById("ribaTxt").innerHTML = "+ Riba (" + (ribaPercent*100) + "%): " + riba.toLocaleString() + " TZS";
+  document.getElementById("mweziTxt").innerHTML = "➡️ Lipa: " + Math.round(kwaMwezi).toLocaleString() + " TZS / mwezi";
+
+  let ujumbe = "Habari Duka la Abdul, nataka " + jinaSimu + ". Nina downpayment " + down.toLocaleString() + ". Naomba kulipa " + Math.round(kwaMwezi).toLocaleString() + " kwa miezi " + miezi + " (pamoja na riba)";
+  document.getElementById("waLink").href = "https://wa.me/255710240894?text=" + encodeURIComponent(ujumbe);
 }
 </script>
+
+</body>
+</html>
