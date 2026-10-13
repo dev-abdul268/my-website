@@ -1,0 +1,51 @@
+<div style="max-width: 380px; margin: auto; font-family: sans-serif; background: #f5f5f5; padding: 15px; border-radius: 20px;">
+
+<h1 style="text-align: center;">SAMSUNG</h1>
+<img src="https://images.samsung.com/is/image/samsung/p6pim/za/feature/101111225/za-feature-spotlight--stylish-design-436359415?$FB_TYPE_A_JPG$" style="width: 100%; border-radius: 15px;">
+
+<div style="background: white; padding: 20px; border-radius: 15px; margin-top: 15px;">
+<h2 style="margin: 0;">Galaxy S24 - 1,850,000 TZS</h2>
+<p style="color: gray;">Lipia kidogo kidogo</p>
+
+<p><b>Downpayment:</b></p>
+<input type="number" id="down" placeholder="400,000" style="width: 90%; padding: 12px; border-radius: 10px; border: 1px solid #ccc;">
+
+<p><b>Miezi:</b></p>
+<select id="miezi" style="width: 95%; padding: 12px; border-radius: 10px;">
+  <option value="6">Miezi 6</option>
+  <option value="12" selected>Miezi 12</option>
+  <option value="18">Miezi 18</option>
+</select>
+
+<br><br>
+<button onclick="kokotoa()" style="width: 100%; background: #1428a0; color: white; padding: 15px; border-radius: 25px; border: none; font-size: 18px; font-weight: bold;">ONA MALIPO YANGU</button>
+
+<div id="matokeoDiv" style="display: none; background: #eef2ff; padding: 15px; border-radius: 10px; margin-top: 15px;">
+  <p id="baki" style="margin: 5px;"></p>
+  <h2 id="mwezi" style="margin: 5px; color: #1428a0;"></h2>
+</div>
+
+<br>
+<a id="waLink" href="#" style="display: none; background: #25D366; color: white; padding: 15px; text-decoration: none; border-radius: 25px; text-align: center; display: none; font-weight: bold;">💬 TUMA WHATSAPP SASA</a>
+</div>
+</div>
+
+<script>
+function kokotoa() {
+  let bei = 1850000;
+  let down = Number(document.getElementById("down").value);
+  let miezi = Number(document.getElementById("miezi").value);
+  if(down == 0){ alert("Weka downpayment kwanza!"); return; }
+  let baki = bei - down;
+  let kwaMwezi = baki / miezi;
+  
+  document.getElementById("matokeoDiv").style.display = "block";
+  document.getElementById("baki").innerHTML = "Jumla inayobaki: " + baki.toLocaleString() + " TZS";
+  document.getElementById("mwezi").innerHTML = "Lipa: " + Math.round(kwaMwezi).toLocaleString() + " TZS / mwezi";
+  
+  let ujumbe = "Habari Samsung Store, nataka S24. Bei 1,850,000. Nina downpayment " + down + ". Naomba kulipa " + Math.round(kwaMwezi) + " kwa miezi " + miezi;
+  let link = document.getElementById("waLink");
+  link.href = "https://wa.me/255710240894?text=" + encodeURIComponent(ujumbe);
+  link.style.display = "block";
+}
+</script>
