@@ -48,6 +48,8 @@ select,input{width:100%; padding:15px; border-radius:12px; border:1.5px solid #d
 <a id="waLink" href="#" style="display:block; background:#25D366; color:white; text-align:center; padding:16px; border-radius:12px; text-decoration:none; font-weight:bold; margin-top:12px;">Tuma WhatsApp 💬</a>
 </div>
 
+<button onclick="shareSite()" style="width:100%; background:#f2f2f2; color:black; padding:14px; border-radius:12px; border:none; font-weight:bold; margin-top:10px;">🔗 Share kwa Rafiki</button>
+
 <p style="text-align:center; color:#aaa; font-size:12px; margin-top:30px;">Made with ❤️ by Developer_Abdul </p>
 </div>
 
@@ -78,6 +80,15 @@ function kokotoa(){
  let msg = "Habari Abdul, nataka "+jina+". Downpayment "+down.toLocaleString()+". Lipa "+Math.round(mwezi).toLocaleString()+" kwa miezi "+miezi;
  document.getElementById("waLink").href="https://wa.me/255749485488?text="+encodeURIComponent(msg);
 }
+
+function shareSite(){
+  if (navigator.share) {
+    navigator.share({ title: 'Duka la Abdul', text: 'Angalia simu kwa malipo kidogo!', url: window.location.href })
+  } else {
+    alert("Copy link hii: " + window.location.href);
+  }
+}
+
 </script>
 </body>
 </html>
