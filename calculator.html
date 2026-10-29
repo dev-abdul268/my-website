@@ -1,85 +1,83 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Duka la Abdul</title>
 <style>
-body{font-family:sans-serif; background:#f2f2f2; padding:10px; margin:0;}
-.card{max-width:400px; margin:auto; background:white; border-radius:20px; padding:15px; box-shadow:0 4px 15px rgba(0,0,0,0.1);}
-h2{text-align:center; margin:5px;}
-img#phoneImg{width:100%; border-radius:15px; height:250px; object-fit:cover; background:#eee;}
-select, input{width:100%; padding:12px; border-radius:10px; border:1px solid #ccc; margin-top:5px; box-sizing:border-box; font-size:16px;}
-button{width:100%; background:#000; color:white; padding:16px; border-radius:12px; border:none; font-weight:bold; font-size:18px; margin-top:15px;}
-#result{display:none; background:#f8f9ff; border:1px dashed #1428a0; padding:15px; border-radius:12px; margin-top:15px;}
-.waBtn{background:#25D366; color:white; text-align:center; padding:15px; border-radius:12px; text-decoration:none; display:block; font-weight:bold; margin-top:10px;}
+body{margin:0; font-family:-apple-system, sans-serif; background:#f5f5f7;}
+.top{background:black; color:white; padding:20px; text-align:center;}
+.top h1{margin:0; font-size:24px;}
+.card{max-width:390px; margin:-20px auto 20px; background:white; border-radius:30px 30px 0 0; padding:25px; min-height:100vh;}
+.phone-img{width:100%; height:220px; background:linear-gradient(135deg,#667eea,#764ba2); border-radius:20px; display:flex; align-items:center; justify-content:center; font-size:80px;}
+label{font-weight:600; margin-top:15px; display:block; font-size:14px;}
+select,input{width:100%; padding:15px; border-radius:12px; border:1.5px solid #ddd; margin-top:6px; font-size:16px; background:#f9f9f9; box-sizing:border-box;}
+.btn-black{width:100%; background:black; color:white; padding:18px; border-radius:14px; border:none; font-weight:bold; font-size:17px; margin-top:20px;}
+#result{display:none; margin-top:20px; padding:18px; background:#f0fff4; border-radius:16px; border:1px solid #c6f6d5;}
 </style>
 </head>
 <body>
-
+<div class="top"><h1>DUKA LA ABDUL 📱</h1><p style="opacity:0.7; margin:5px 0 20px;">Malipo Kidogo Kidogo</p></div>
 <div class="card">
-<h2>📱 Duka la Abdul</h2>
-<p style="text-align:center; color:gray; margin-top:0;">Chagua simu uone malipo</p>
+<div id="imgBox" class="phone-img">📱</div>
 
-<img id="phoneImg" src="https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?q=80&w=500">
-
-<label><b>Chagua Simu:</b></label>
-<select id="simu" onchange="badiliSimu()">
-  <option value="1500000|https://images.unsplash.com/photo-1610945415295-d9bbf067e59c?q=80&w=500">Samsung S24 - 1,500,000 TZS</option>
-  <option value="3200000|https://images.unsplash.com/photo-1591337676887-a217a6970a8a?q=80&w=500">iPhone 14 Pro - 3,200,000 TZS</option>
-  <option value="450000|https://images.unsplash.com/photo-1592899677977-9bb10ba128a5?q=80&w=500">Tecno Camon 20 - 450,000 TZS</option>
-  <option value="890000|https://images.unsplash.com/photo-1598327105666-5b89351aff97?q=80&w=500">Redmi Note 12 - 890,000 TZS</option>
+<label>Chagua Simu</label>
+<select id="simu" onchange="badili()">
+<option value="1500000">Samsung S24 - 1.5M TZS</option>
+<option value="3200000">iPhone X / 11 - 3.2M TZS</option>
+<option value="450000">Tecno Camon 20 - 450K TZS</option>
+<option value="890000">Redmi Note 12 - 890K TZS</option>
+<option value="2100000">iPhone 14 - 2.1M TZS</option>
 </select>
 
-<label style="margin-top:10px; display:block;"><b>Downpayment yako (TZS):</b></label>
-<input type="number" id="down" placeholder="mf: 300000">
+<label>Downpayment yako (TZS)</label>
+<input type="number" id="down" placeholder="300000" inputmode="numeric">
 
-<label style="margin-top:10px; display:block;"><b>Miezi:</b></label>
+<label>Lipa kwa Miezi</label>
 <select id="miezi">
-  <option value="6">Miezi 6 (Riba 5%)</option>
-  <option value="12" selected>Miezi 12 (Riba 10%)</option>
-  <option value="18">Miezi 18 (Riba 15%)</option>
+<option value="6">Miezi 6 + 5% Riba</option>
+<option value="12" selected>Miezi 12 + 10% Riba</option>
+<option value="18">Miezi 18 +15% Riba</option>
 </select>
 
-<button onclick="kokotoa()">KOKOTOA MALIPO 💰</button>
+<button class="btn-black" onclick="kokotoa()">ONA MALIPO YANGU →</button>
 
 <div id="result">
-  <p id="bakiTxt"></p>
-  <p id="ribaTxt" style="color:#d00; font-size:14px;"></p>
-  <h3 id="mweziTxt" style="color:green; margin:10px 0;"></h3>
-  <a id="waLink" class="waBtn" href="#">Tuma WhatsApp Sasa 💬</a>
+<p id="bakiTxt" style="margin:5px 0;"></p>
+<p id="ribaTxt" style="margin:5px 0; color:#e53e3e; font-size:13px;"></p>
+<h2 id="mweziTxt" style="margin:10px 0; color:#000;"></h2>
+<a id="waLink" href="#" style="display:block; background:#25D366; color:white; text-align:center; padding:16px; border-radius:12px; text-decoration:none; font-weight:bold; margin-top:12px;">Tuma WhatsApp 💬</a>
 </div>
+
+<p style="text-align:center; color:#aaa; font-size:12px; margin-top:30px;">Made with ❤️ by Developer_Abdul </p>
 </div>
 
 <script>
-function badiliSimu(){
-  let val = document.getElementById("simu").value;
-  let picha = val.split("|")[1];
-  document.getElementById("phoneImg").src = picha;
+function badili(){
+ let v = document.getElementById("simu").value;
+ let box = document.getElementById("imgBox");
+ if(v=="1500000") box.innerHTML="S24";
+ else if(v=="3200000") box.innerHTML="X";
+ else if(v=="450000") box.innerHTML="TECNO";
+ else box.innerHTML="📱";
 }
-
 function kokotoa(){
-  let simuData = document.getElementById("simu").value.split("|");
-  let bei = Number(simuData[0]);
-  let jinaSimu = document.getElementById("simu").options[document.getElementById("simu").selectedIndex].text;
-  let down = Number(document.getElementById("down").value);
-  let miezi = Number(document.getElementById("miezi").value);
-
-  if(!down || down >= bei){ alert("Weka downpayment sahihi, lazima iwe chini ya bei!"); return; }
-
-  let baki = bei - down;
-  let ribaPercent = miezi==6? 0.05 : miezi==12? 0.10 : 0.15;
-  let riba = baki * ribaPercent;
-  let jumlaKulipa = baki + riba;
-  let kwaMwezi = jumlaKulipa / miezi;
-
-  document.getElementById("result").style.display = "block";
-  document.getElementById("bakiTxt").innerHTML = "Baki: <b>" + baki.toLocaleString() + " TZS</b>";
-  document.getElementById("ribaTxt").innerHTML = "+ Riba (" + (ribaPercent*100) + "%): " + riba.toLocaleString() + " TZS";
-  document.getElementById("mweziTxt").innerHTML = "➡️ Lipa: " + Math.round(kwaMwezi).toLocaleString() + " TZS / mwezi";
-
-  let ujumbe = "Habari Duka la Abdul, nataka " + jinaSimu + ". Nina downpayment " + down.toLocaleString() + ". Naomba kulipa " + Math.round(kwaMwezi).toLocaleString() + " kwa miezi " + miezi + " (pamoja na riba)";
-  document.getElementById("waLink").href = "https://wa.me/255710240894?text=" + encodeURIComponent(ujumbe);
+ let bei = Number(document.getElementById("simu").value);
+ let down = Number(document.getElementById("down").value);
+ let miezi = Number(document.getElementById("miezi").value);
+ let jina = document.getElementById("simu").options[document.getElementById("simu").selectedIndex].text;
+ if(!down || down>=bei){ alert("Weka downpayment sahihi!"); return; }
+ let baki = bei-down;
+ let rP = miezi==6?0.05:miezi==12?0.10:0.15;
+ let riba = baki*rP;
+ let jumla = baki+riba;
+ let mwezi = jumla/miezi;
+ document.getElementById("result").style.display="block";
+ document.getElementById("bakiTxt").innerHTML="Baki: <b>"+baki.toLocaleString()+" TZS</b>";
+ document.getElementById("ribaTxt").innerHTML="Riba "+(rP*100)+"%: "+Math.round(riba).toLocaleString()+" TZS";
+ document.getElementById("mweziTxt").innerHTML=Math.round(mwezi).toLocaleString()+" TZS / mwezi";
+ let msg = "Habari Abdul, nataka "+jina+". Downpayment "+down.toLocaleString()+". Lipa "+Math.round(mwezi).toLocaleString()+" kwa miezi "+miezi;
+ document.getElementById("waLink").href="https://wa.me/255749485488?text="+encodeURIComponent(msg);
 }
 </script>
-
 </body>
 </html>
