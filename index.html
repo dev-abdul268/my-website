@@ -1,41 +1,60 @@
-<h1 style="text-align:center;">📱 Samsung iPhone Calculator</h1>
-
-<div style="border: 2px solid black; padding: 20px; border-radius: 10px; max-width: 350px; margin: auto;">
-
-<p>Bei ya Simu (TZS):</p>
-<input type="number" id="beiSimu" value="1500000" style="width: 95%; padding: 10px;">
-
-<p>Downpayment Ulicho nacho (TZS):</p>
-<input type="number" id="down" placeholder="mf: 300000" style="width: 95%; padding: 10px;">
-
-<p>Miezi ya kulipa (6 au 12):</p>
-<input type="number" id="miezi" value="12" style="width: 95%; padding: 10px;">
-
-<br><br>
-<button onclick="kokotoa()" style="width: 100%; background: black; color: white; padding: 15px; border-radius: 10px; font-size: 18px;">KOKOTOA</button>
-
-<h2 id="baki" style="color: red;"></h2>
-<h2 id="mwezi" style="color: green;"></h2>
-
-<a id="waLink" href="#" style="display:none; background: green; color: white; padding: 12px; text-decoration: none; border-radius: 10px; display: none; text-align: center;">Tuma WhatsApp kwa Samsung</a>
-
+<!DOCTYPE html>
+<html lang="sw">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Developer Abdul - Websites | Logos | Posters</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:-apple-system,BlinkMacSystemFont,sans-serif}
+body{background:#0a0a0a;color:white;}
+.hero{padding:50px 25px; text-align:center; background:radial-gradient(circle at top, #2a2a72, #0a0a0a);}
+.hero h1{font-size:42px; font-weight:900; line-height:1.1;}
+.hero span{background:linear-gradient(90deg,#00f5ff,#ff00ff); -webkit-background-clip:text; -webkit-text-fill-color:transparent;}
+.hero p{color:#aaa; margin-top:15px; font-size:17px;}
+.btn{display:inline-block; background:white; color:black; padding:16px 30px; border-radius:30px; font-weight:bold; text-decoration:none; margin-top:25px; font-size:16px;}
+.services{padding:30px 20px; display:grid; gap:15px; max-width:500px; margin:0 auto;}
+.card{background:#151515; border:1px solid #222; padding:25px; border-radius:20px;}
+.card h3{font-size:22px; margin-bottom:8px;}
+.card p{color:#888; font-size:14px; line-height:1.5;}
+.price{font-size:28px; font-weight:800; margin-top:15px;}
+.card .tag{display:inline-block; background:#222; padding:6px 12px; border-radius:20px; font-size:12px; margin-bottom:10px;}
+.active{border:1px solid #00f5ff; background:linear-gradient(180deg, #151515, #111827);}
+.btn-wa{display:block; background:#25D366; color:white; text-align:center; padding:18px; border-radius:14px; text-decoration:none; font-weight:bold; margin-top:15px;}
+.footer{text-align:center; padding:40px; color:#555; font-size:13px;}
+</style>
+</head>
+<body>
+<div class="hero">
+<p style="letter-spacing:3px; font-size:12px; color:#00f5ff;">DAR ES SALAAM • DEVELOPER</p>
+<h1>Mimi ni<br><span>DEVELOPER<br>ABDUL</span></h1>
+<p>Natengeneza Websites, Logo Design na Poster kali zinazouza. Bei ya mwanafunzi, quality ya kampuni.</p>
+<a class="btn" href="https://wa.me/255749485488?text=Habari%20Abdul%20nataka%20website">Nicheki WhatsApp →</a>
 </div>
 
-<script>
-function kokotoa() {
-  let bei = Number(document.getElementById("beiSimu").value);
-  let down = Number(document.getElementById("down").value);
-  let miezi = Number(document.getElementById("miezi").value);
-  
-  let baki = bei - down;
-  let kwaMwezi = baki / miezi;
-  
-  document.getElementById("baki").innerHTML = "Baki kulipa: " + baki + " TZS";
-  document.getElementById("mwezi").innerHTML = "Kwa mwezi: " + Math.round(kwaMwezi) + " TZS kwa miezi " + miezi;
-  
-  let ujumbe = "Habari, nataka simu ya " + bei + ". Nina downpayment " + down + " naomba kulipa " + Math.round(kwaMwezi) + " kwa mwezi.";
-  let link = document.getElementById("waLink");
-  link.href = "https://wa.me/255710240894?text=" + encodeURIComponent(ujumbe);
-  link.style.display = "block";
-}
-</script>
+<div class="services">
+<div class="card active">
+<div class="tag">🔥 INAYOUZWA SANA</div>
+<h3>Website ya Biashara</h3>
+<p>Website kama ya duka, saluni, mgahawa au kampuni. Inafanya kazi kwenye simu, na malipo ya awamu calculator kama ulivyoona.</p>
+<div class="price">Kuanzia 150k TZS</div>
+<a class="btn-wa" href="https://wa.me/255749485488?text=Habari%20Abdul%20nataka%20Website%20ya%20biashara">Naitaji Website</a>
+</div>
+
+<div class="card">
+<h3>🎨 Logo Design Pro</h3>
+<p>Logo 3 design tofauti, file zote (PNG, JPG, PDF), na mockup ya biashara yako. Haraka masaa 24.</p>
+<div class="price">Kuanzia 30k TZS</div>
+<a class="btn-wa" style="background:white; color:black;" href="https://wa.me/255749485488?text=Habari%20Abdul%20nataka%20Logo">Naitaji Logo</a>
+</div>
+
+<div class="card">
+<h3>📱 Poster za Mauzo</h3>
+<p>Poster 5 za Instagram / WhatsApp Status / Facebook kama ile niliyokutengenezea ya Duka la Abdul. Zinazovuta macho.</p>
+<div class="price">Kuanzia 15k TZS</div>
+<a class="btn-wa" style="background:white; color:black;" href="https://wa.me/255749485488?text=Habari%20Abdul%20nataka%20Poster">Naitaji Poster</a>
+</div>
+</div>
+
+<div class="footer">Developer Abdul • iPhone X Edition • 0749 485 488 • Dar es Salaam<br>Kazi safi, bei poa, haraka.</div>
+</body>
+</html>
